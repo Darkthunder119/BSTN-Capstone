@@ -1,0 +1,22 @@
+.about{
+    display: flex;
+    color: #263D4D;
+    background-color: #D1735A;
+    &__info{
+        text-align: left;
+        padding-left: 40px;
+    }
+    &__stuff{
+        width: 900px;
+        
+    }
+    &__image{
+        flex: 1 1 50%
+    }
+    &__heading{
+        color: #263D4D;
+        font-size: 36px;
+        background-color: #D1735A;
+        margin: 0;
+    }
+}

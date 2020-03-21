@@ -1,0 +1,28 @@
+.header{
+    background-color: #D1735A;
+    &__nav{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__side{
+        display: flex;
+        width: 40%;
+        justify-content: space-between;
+    }
+    &__links{
+        text-decoration: none;
+        color: #263D4D;
+    }
+    &__heading{
+        margin: 0;
+        font-size: 60px;
+        text-align: left;
+        padding-left: 40px;
+    }
+    &__text{
+        color: #FFF;
+        text-align: left;
+        padding-left: 40px;
+        margin: 0;
+    }
+}
