@@ -3,8 +3,10 @@
 .welcome{
     background-color: $background-default;
     color: $font-text-color-default;
+    padding: 0 40px;
     &__heading{
         margin: 0;
+        font-size: 32px;
     }
     &__chartbox{
         display: flex;
@@ -14,5 +16,24 @@
     &__charts{
         width: 400px;
         height: 400px;
+    }
+    &__text{
+        font-size: 21px;
+        text-align: left;
+    }
+    &__texttwo{
+        margin-top: 32px;
+        display: flex;
+        justify-content: space-evenly;
+        font-size: 21px;
+    }
+    &__para1{
+        flex: 1 1 33%;
+    }
+    &__para2{
+        flex: 1 1 33%;
+    }
+    &__para3{
+        flex: 1 1 33%;
     }
 }

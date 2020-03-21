@@ -1,0 +1,37 @@
+@import '../../styles/global';
+
+.apexcharts-menu-icon{
+    display: none;
+}
+.apexcharts-svg{
+    border-radius: 5px;
+}
+.stats{
+    color: $font-text-color-default;
+    background-color: $background-default;
+    &__text{
+        font-size: 21px;
+    }
+    &__select{
+        margin-top: 32px;
+        font-size: 21px;
+        color: $font-text-color-default;
+        width: 400px;
+        text-align: center;
+        border-radius: 5px;
+    }
+    &__options{
+        color: $font-text-color-default;
+        text-align: center;
+    }
+    &__graph{
+        margin-top: 12px;
+        display: flex;
+        justify-content: center;
+    }
+    &__loading{
+        width: 100vw;
+        height: 100vh;
+        background-color: $background-default;
+    }
+}

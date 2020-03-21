@@ -6,7 +6,7 @@ class Welcome extends React.Component {
     return (
       <article className="welcome">
         <h2 className="welcome__heading">Welcome To HESTIA!</h2>
-        <div className="welcome__text">
+        <div className="welcome__text">The website provides stats on your neighbourhood's crime from 2014 to 2019 as provided by the Toronto Police OpenDataBase. Other datasets including Place of Interest, schooling and TTC data is also available.</div>
           <div className="welcome__chartbox">
             <ReactMinimalPieChart
               className="welcome__charts"
@@ -102,7 +102,7 @@ class Welcome extends React.Component {
               viewBoxSize={[100, 100]}
             />
           </div>
-        </div>
+          <div className="welcome__texttwo"><p className="welcome__para1">Rouge</p><p className="welcome__para2">Guildwood</p><p className="welcome__para3">Bay Street Corridor</p></div>
       </article>
     );
   }

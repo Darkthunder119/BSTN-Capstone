@@ -2,7 +2,8 @@ import React from "react";
 import Axios from "axios";
 import ChartPage from "../ChartPage/ChartPage";
 import Header from '../Header/Header'
-
+import './stats.scss'
+import Loader from 'react-loader-spinner';
 class StatsPage extends React.Component {
   constructor(props) {
     super(props);
@@ -61,7 +62,14 @@ class StatsPage extends React.Component {
         </>
       );
     } else {
-      return <><Header />LOADING...</>;
+      return <><Header /><div className="stats__loading"><Loader
+      type="Bars"
+      color="#263D4D"
+      height={100}
+      width={100}
+      timeout={3000} //3 secs
+
+   /></div></>;
     }
   }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import Chart from "react-apexcharts";
-
+import '../Statistics/stats.scss'
 class ChartPage extends React.Component {
   constructor(props) {
     super(props);
@@ -34,20 +34,22 @@ class ChartPage extends React.Component {
   }
   render() {
     return (
-      <React.Fragment>
+      <section className="stats">
+        <div className="stats__text">The following graphs are interactable using the input selectors and display crime statistics for all 140 Neighbourhoods</div>
+        <select onChange={this.onChangeHandler} name="select" className="stats__select">
+          {this.props.data.map((val, i) => (
+            <option key={i} className="stats__options">{val}</option>
+          ))}
+        </select>
         <Chart
           options={this.state.options}
           series={[{ name: this.props.namer, data: this.props.assault }]}
           type="bar"
           height="700"
           width="90%"
+          className="stats__graph"
         />
-        <select onChange={this.onChangeHandler} name="select">
-          {this.props.data.map((val, i) => (
-            <option key={i}>{val}</option>
-          ))}
-        </select>
-      </React.Fragment>
+      </section>
     );
   }
 }
