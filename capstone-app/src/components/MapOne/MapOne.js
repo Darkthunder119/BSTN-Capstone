@@ -61,6 +61,7 @@ function MapOne() {
   return (
     <>
       <Header />
+      <div>HAHHAHAHAHAHAHAH</div>
       <section className="mapsData">
         <Geocoder
           onSelected={onSelected}
