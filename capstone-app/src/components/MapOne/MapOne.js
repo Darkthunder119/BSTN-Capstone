@@ -18,7 +18,7 @@ function MapOne() {
     latitude: 43.7135,
     longitude: -79.2916,
     zoom: 10.34,
-    width: "100vw",
+    width: "80%",
     height: "600px"
   });
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -61,22 +61,25 @@ function MapOne() {
   return (
     <>
       <Header />
-      <div>HAHHAHAHAHAHAHAH</div>
-      <section className="mapsData">
+      <div className="maps__text">The Following Map lets you search for any area and shows previous crimes, places of interest and schools in the area. Scroll down once you have selected something to so more about the Neighbourhood</div>
+      <section className="maps__data">
         <Geocoder
           onSelected={onSelected}
           viewport={viewport}
           hideOnSelect={true}
           queryParams={queryParams}
-          className="map__search"
+          className="maps__search"
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+          updateInputOnSelect={true}
+          pointZoom={14}
+          transitionDuration={200}
         />
         <ReactMapGL
           {...viewport}
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
           onViewportChange={setViewport}
           mapStyle="mapbox://styles/darkthunder119/ck7ty708v4f2j1imk71n1fsr5"
-          className="map"
+          className="maps__map"
         >
           {placesData.default.features.map(places => (
             <Marker
@@ -85,7 +88,7 @@ function MapOne() {
               longitude={places.geometry.coordinates[0]}
             >
               <img
-                className="image__stylez"
+                className="maps__image"
                 onClick={e => {
                   e.preventDefault();
                   setSelectedPlace(places);
