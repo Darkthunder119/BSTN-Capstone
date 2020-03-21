@@ -1,5 +1,19 @@
+@import '../../styles/global';
+
+@keyframes floater{
+    from{
+        left: 0%;
+    }
+    to{
+        left: 62%;
+    }
+}
+
+body{
+    overflow-x: hidden;
+}
 .header{
-    background-color: #D1735A;
+    background-color: $background-default;
     &__nav{
         display: flex;
         justify-content: space-between;
@@ -11,7 +25,7 @@
     }
     &__links{
         text-decoration: none;
-        color: #263D4D;
+        color: $font-text-color-default;
     }
     &__heading{
         margin: 0;
@@ -24,5 +38,14 @@
         text-align: left;
         padding-left: 40px;
         margin: 0;
+        padding-bottom: 12px;
+    }
+    &__about{
+        margin-right: 40px;
+    }
+    &__text{
+        position: relative;
+        animation: floater 10s infinite alternate ease-in-out;
     }
 }
+

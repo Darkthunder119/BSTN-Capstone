@@ -14,7 +14,8 @@ function About() {
             "hearth" or "fireside") is the virgin goddess of the hearth, the
             right ordering of domesticity, the family, the home, and the state.
             In Greek mythology, she is the daughter and firstborn child of
-            Kronos and Rhea. See the tree below to see how she relates to other popular Greek Gods and Goddesses:
+            Kronos and Rhea. This is why I chose her as the name of the website.
+            See the tree below to see how she relates to other popular Greek Gods and Goddesses:
           </p>
           <img src={Tree} className="about__stuff" />
         </div>

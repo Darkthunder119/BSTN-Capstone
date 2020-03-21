@@ -1,0 +1,18 @@
+@import '../../styles/global';
+
+.welcome{
+    background-color: $background-default;
+    color: $font-text-color-default;
+    &__heading{
+        margin: 0;
+    }
+    &__chartbox{
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 32px;
+    }
+    &__charts{
+        width: 400px;
+        height: 400px;
+    }
+}

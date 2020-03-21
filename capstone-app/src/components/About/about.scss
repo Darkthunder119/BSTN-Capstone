@@ -1,7 +1,10 @@
+@import '../../styles/global';
+
 .about{
     display: flex;
-    color: #263D4D;
-    background-color: #D1735A;
+    color: $font-text-color-default;
+    background-color: $background-default;
+    padding-bottom: 12px;
     &__info{
         text-align: left;
         padding-left: 40px;
@@ -14,9 +17,9 @@
         flex: 1 1 50%
     }
     &__heading{
-        color: #263D4D;
+        color: $font-text-color-default;
         font-size: 36px;
-        background-color: #D1735A;
+        background-color: $background-default;
         margin: 0;
     }
 }

@@ -15,10 +15,10 @@ function Header() {
               <h1 className="header__maps">MAP</h1>
             </Link>
             <Link to="/stats" className="header__links">
-              <h1 className="header__maps">STATS</h1>
+              <h1 className="header__stats">STATS</h1>
             </Link>
             <Link to="/about" className="header__links">
-              <h1 className="header__maps">ABOUT</h1>
+              <h1 className="header__about">ABOUT</h1>
             </Link>
           </div>
         </div>
