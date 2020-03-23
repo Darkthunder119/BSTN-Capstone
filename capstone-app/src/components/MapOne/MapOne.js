@@ -323,11 +323,11 @@ function MapOne() {
               layers={[
                 searchResultLayer,
                 crimeLayerOne,
-                // crimeLayerTwo,
-                // crimeLayerThree,
-                // crimeLayerFour,
-                // crimeLayerFive,
-                // schoolLayer
+                crimeLayerTwo,
+                crimeLayerThree,
+                crimeLayerFour,
+                crimeLayerFive,
+                schoolLayer
               ]}
             >
               {renderTooltip}
