@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 import ReactMapGL, {
   Marker,
   Popup,
-  Source,
-  Layer,
   NavigationControl,
   FullscreenControl,
   ScaleControl
@@ -66,19 +64,24 @@ function MapOne() {
     pointerX: "",
     pointerY: ""
   });
+  const [school, setSchool] = useState({
+    hoveredObject: "",
+    pointerX: "",
+    pointerY: ""
+  });
 
-  useEffect(() => {
-    const listener = e => {
-      if (e.key === "Escape") {
-        setSelectedPlace(null);
-      }
-    };
-    window.addEventListener("keydown", listener);
+  // useEffect(() => {
+  //   const listener = e => {
+  //     if (e.key === "Escape") {
+  //       setSelectedPlace(null);
+  //     }
+  //   };
+  //   window.addEventListener("keydown", listener);
 
-    return () => {
-      window.removeEventListener("keydown", listener);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("keydown", listener);
+  //   };
+  // }, []);
 
   const renderTooltip = () => {
     return (
@@ -89,7 +92,10 @@ function MapOne() {
             zIndex: 1,
             pointerEvents: "none",
             left: test.pointerX,
-            top: test.pointerY
+            top: test.pointerY,
+            backgroundColor: "#000000",
+            color: "#FFFFFF",
+            borderRadius: "5px"
           }}
         >
           {test.hoveredObject.message}
@@ -107,7 +113,10 @@ function MapOne() {
             zIndex: 1,
             pointerEvents: "none",
             left: crimeData.pointerX,
-            top: crimeData.pointerY
+            top: crimeData.pointerY,
+            backgroundColor: "#000000",
+            color: "#FFFFFF",
+            borderRadius: "5px"
           }}
         >
           {crimeData.hoveredObject.properties.MCI} <br />
@@ -117,15 +126,37 @@ function MapOne() {
       )
     );
   };
+
+  const renderTooltipSchool = () => {
+    return (
+      school.hoveredObject && (
+        <div
+          style={{
+            position: "absolute",
+            zIndex: 1,
+            pointerEvents: "none",
+            left: crimeData.pointerX,
+            top: crimeData.pointerY,
+            backgroundColor: "#000000",
+            color: "#FFFFFF",
+            borderRadius: "5px"
+          }}
+        >
+          {school.hoveredObject.properties.NAME} <br />
+          {school.hoveredObject.properties.ADDRESS_FULL} <br />
+          {school.hoveredObject.properties.POSTAL_CODE}
+        </div>
+      )
+    );
+  };
   let onSelected = (viewport, item) => {
     setViewport(viewport);
-    // console.log("Selected: ", item);
     setSearchResultLayer(
       new GeoJsonLayer({
         id: "search-result",
         data: [{ geometry: item.geometry, message: item.place_name }],
         pickable: true,
-        getFillColor: [255, 123, 0, 128],
+        getFillColor: [20, 75, 195, 255],
         getRadius: 25,
         pointRadiusMinPixels: 5,
         pointRadiusMaxPixels: 5,
@@ -144,12 +175,11 @@ function MapOne() {
     id: "Assault-data",
     data: Assault,
     pickable: true,
-    getFillColor: [165, 12, 12, 100],
+    getFillColor: [165, 12, 12, 255],
     getRadius: 25,
     pointRadiusMinPixels: 5,
     pointRadiusMaxPixels: 5,
     onHover: info => {
-      console.log(info);
       setCrimeData({
         hoveredObject: info.object,
         pointerX: info.x,
@@ -162,12 +192,11 @@ function MapOne() {
     id: "Auto-data",
     data: Auto,
     pickable: true,
-    getFillColor: [250, 101, 7, 100],
+    getFillColor: [250, 101, 7, 255],
     getRadius: 25,
     pointRadiusMinPixels: 5,
     pointRadiusMaxPixels: 5,
     onHover: info => {
-      console.log(info);
       setCrimeData({
         hoveredObject: info.object,
         pointerX: info.x,
@@ -177,15 +206,14 @@ function MapOne() {
   });
 
   const crimeLayerThree = new GeoJsonLayer({
-    id: "Auto-data",
+    id: "BE-data",
     data: BE,
     pickable: true,
-    getFillColor: [168, 48, 40, 100],
+    getFillColor: [168, 48, 40, 255],
     getRadius: 25,
     pointRadiusMinPixels: 5,
     pointRadiusMaxPixels: 5,
     onHover: info => {
-      console.log(info);
       setCrimeData({
         hoveredObject: info.object,
         pointerX: info.x,
@@ -195,15 +223,14 @@ function MapOne() {
   });
 
   const crimeLayerFour = new GeoJsonLayer({
-    id: "Auto-data",
+    id: "Robbery-data",
     data: Robbery,
     pickable: true,
-    getFillColor: [218, 1, 109, 100],
+    getFillColor: [218, 1, 109, 255],
     getRadius: 25,
     pointRadiusMinPixels: 5,
     pointRadiusMaxPixels: 5,
     onHover: info => {
-      console.log(info);
       setCrimeData({
         hoveredObject: info.object,
         pointerX: info.x,
@@ -212,16 +239,32 @@ function MapOne() {
     }
   });
 
-  const crimeLayerFive = new GeoJsonLayer({
-    id: "Auto-data",
-    data: Theft,
+  const schoolLayer = new GeoJsonLayer({
+    id: "School-data",
+    data: schoolData,
     pickable: true,
-    getFillColor: [148, 46, 60, 100],
+    getFillColor: [226, 240, 54, 255],
     getRadius: 25,
     pointRadiusMinPixels: 5,
     pointRadiusMaxPixels: 5,
     onHover: info => {
-      console.log(info);
+      setSchool({
+        hoveredObject: info.object,
+        pointerX: info.x,
+        pointerY: info.y
+      });
+    }
+  });
+
+  const crimeLayerFive = new GeoJsonLayer({
+    id: "Theft-data",
+    data: Theft,
+    pickable: true,
+    getFillColor: [148, 46, 60, 255],
+    getRadius: 25,
+    pointRadiusMinPixels: 5,
+    pointRadiusMaxPixels: 5,
+    onHover: info => {
       setCrimeData({
         hoveredObject: info.object,
         pointerX: info.x,
@@ -283,11 +326,13 @@ function MapOne() {
                 crimeLayerTwo,
                 crimeLayerThree,
                 crimeLayerFour,
-                crimeLayerFive
+                crimeLayerFive,
+                schoolLayer
               ]}
             >
               {renderTooltip}
               {renderTooltipCrime}
+              {renderTooltipSchool}
             </DeckGL>
           )}
           {searchResultLayer &&
