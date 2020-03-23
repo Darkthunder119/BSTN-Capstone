@@ -27,6 +27,9 @@ body{
         text-decoration: none;
         color: $font-text-color-default;
     }
+    &__links:hover{
+        color: darken($color: $font-text-color-default, $amount: 4.75);
+    }
     &__heading{
         margin: 0;
         font-size: 60px;

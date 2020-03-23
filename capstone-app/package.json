@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "apexcharts": "^3.17.0",
     "axios": "^0.19.2",
+    "deck.gl": "6.3.0",
     "helmet": "^3.21.3",
     "node-sass": "^4.13.1",
     "react": "^16.13.0",
