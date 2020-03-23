@@ -12,12 +12,15 @@ import ReactMapGL, {
 import * as placesData from "../../assets/datasets/Places of Interest and Attractions.geojson.json";
 import "./mapone.scss";
 import * as schoolData from "../../assets/datasets/School locations-all types data.geojson";
-import * as robbData from "../../assets/datasets/Robbery_2014_to_2019.geojson";
 import Geocoder from "react-mapbox-gl-geocoder";
 import Header from "../Header/Header";
 import DeckGL, { GeoJsonLayer } from "deck.gl";
 import Pins from "../Pins/Pins";
-import FirstNeigh from '../../assets/datasets/1_xaaaa.geojson';
+import Assault from "../../assets/datasets/Assault_xaaaa.geojson";
+import Auto from "../../assets/datasets/Auto Theft_xaaaa.geojson";
+import BE from "../../assets/datasets/Break and Enter_xaaaa.geojson";
+import Robbery from "../../assets/datasets/Robbery_xaaaa.geojson";
+import Theft from "../../assets/datasets/Theft Over_xaaaa.geojson";
 // const address = encodeURIComponent("2866 battleford road");
 // const lat = "43.7652846";
 // const lon = "-79.1629172";
@@ -53,8 +56,16 @@ function MapOne() {
   });
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [searchResultLayer, setSearchResultLayer] = useState(null);
-  const [test, setTest] = useState({hoveredObject : '', pointerX: '', pointerY : ''}); 
-  const [crimeData, setCrimeData] = useState({hoveredObject : '', pointerX: '', pointerY:''})
+  const [test, setTest] = useState({
+    hoveredObject: "",
+    pointerX: "",
+    pointerY: ""
+  });
+  const [crimeData, setCrimeData] = useState({
+    hoveredObject: "",
+    pointerX: "",
+    pointerY: ""
+  });
 
   useEffect(() => {
     const listener = e => {
@@ -70,59 +81,154 @@ function MapOne() {
   }, []);
 
   const renderTooltip = () => {
-    return test.hoveredObject && (
-      <div style={{position: 'absolute', zIndex: 1, pointerEvents: 'none', left: test.pointerX, top: test.pointerY}}>
-        { test.hoveredObject.message }
-      </div>
+    return (
+      test.hoveredObject && (
+        <div
+          style={{
+            position: "absolute",
+            zIndex: 1,
+            pointerEvents: "none",
+            left: test.pointerX,
+            top: test.pointerY
+          }}
+        >
+          {test.hoveredObject.message}
+        </div>
+      )
     );
-  }
+  };
 
   const renderTooltipCrime = () => {
-    return crimeData.hoveredObject && (
-      <div style={{position: 'absolute', zIndex: 1, pointerEvents: 'none', left: crimeData.pointerX, top: crimeData.pointerY}}>
-        {crimeData.hoveredObject.properties.MCI} <br />
-        {crimeData.hoveredObject.properties.Neighbourhood} <br />
-        {crimeData.hoveredObject.properties.occurrencedate}
-      </div>
+    return (
+      crimeData.hoveredObject && (
+        <div
+          style={{
+            position: "absolute",
+            zIndex: 1,
+            pointerEvents: "none",
+            left: crimeData.pointerX,
+            top: crimeData.pointerY
+          }}
+        >
+          {crimeData.hoveredObject.properties.MCI} <br />
+          {crimeData.hoveredObject.properties.Neighbourhood} <br />
+          {crimeData.hoveredObject.properties.occurrencedate}
+        </div>
+      )
     );
-  }
+  };
   let onSelected = (viewport, item) => {
     setViewport(viewport);
     // console.log("Selected: ", item);
     setSearchResultLayer(
       new GeoJsonLayer({
         id: "search-result",
-        data: [{geometry:item.geometry, message:item.place_name}],
+        data: [{ geometry: item.geometry, message: item.place_name }],
         pickable: true,
         getFillColor: [255, 123, 0, 128],
         getRadius: 25,
         pointRadiusMinPixels: 5,
         pointRadiusMaxPixels: 5,
         onHover: info => {
-        setTest({
-          hoveredObject: info.object,
-          pointerX: info.x,
-          pointerY: info.y
-        })}
+          setTest({
+            hoveredObject: info.object,
+            pointerX: info.x,
+            pointerY: info.y
+          });
+        }
       })
     );
   };
 
   const crimeLayerOne = new GeoJsonLayer({
-    id: "crime-data",
-    data: FirstNeigh,
+    id: "Assault-data",
+    data: Assault,
     pickable: true,
-    getFillColor: [255, 123, 0, 128],
-        getRadius: 25,
-        pointRadiusMinPixels: 5,
-        pointRadiusMaxPixels: 5,
-        onHover: info => {console.log(info);
-        setCrimeData({
-          hoveredObject: info.object,
-          pointerX: info.x,
-          pointerY: info.y
-        })}
-  });  
+    getFillColor: [165, 12, 12, 100],
+    getRadius: 25,
+    pointRadiusMinPixels: 5,
+    pointRadiusMaxPixels: 5,
+    onHover: info => {
+      console.log(info);
+      setCrimeData({
+        hoveredObject: info.object,
+        pointerX: info.x,
+        pointerY: info.y
+      });
+    }
+  });
+
+  const crimeLayerTwo = new GeoJsonLayer({
+    id: "Auto-data",
+    data: Auto,
+    pickable: true,
+    getFillColor: [250, 101, 7, 100],
+    getRadius: 25,
+    pointRadiusMinPixels: 5,
+    pointRadiusMaxPixels: 5,
+    onHover: info => {
+      console.log(info);
+      setCrimeData({
+        hoveredObject: info.object,
+        pointerX: info.x,
+        pointerY: info.y
+      });
+    }
+  });
+
+  const crimeLayerThree = new GeoJsonLayer({
+    id: "Auto-data",
+    data: BE,
+    pickable: true,
+    getFillColor: [168, 48, 40, 100],
+    getRadius: 25,
+    pointRadiusMinPixels: 5,
+    pointRadiusMaxPixels: 5,
+    onHover: info => {
+      console.log(info);
+      setCrimeData({
+        hoveredObject: info.object,
+        pointerX: info.x,
+        pointerY: info.y
+      });
+    }
+  });
+
+  const crimeLayerFour = new GeoJsonLayer({
+    id: "Auto-data",
+    data: Robbery,
+    pickable: true,
+    getFillColor: [218, 1, 109, 100],
+    getRadius: 25,
+    pointRadiusMinPixels: 5,
+    pointRadiusMaxPixels: 5,
+    onHover: info => {
+      console.log(info);
+      setCrimeData({
+        hoveredObject: info.object,
+        pointerX: info.x,
+        pointerY: info.y
+      });
+    }
+  });
+
+  const crimeLayerFive = new GeoJsonLayer({
+    id: "Auto-data",
+    data: Theft,
+    pickable: true,
+    getFillColor: [148, 46, 60, 100],
+    getRadius: 25,
+    pointRadiusMinPixels: 5,
+    pointRadiusMaxPixels: 5,
+    onHover: info => {
+      console.log(info);
+      setCrimeData({
+        hoveredObject: info.object,
+        pointerX: info.x,
+        pointerY: info.y
+      });
+    }
+  });
 
   // api.walkscore.com/score?format=json&address=${address}&lat=${lat}&lon=${lon}&wsapikey=${API_KEY}`
   // componentDidMount() {
@@ -168,7 +274,22 @@ function MapOne() {
           mapStyle="mapbox://styles/darkthunder119/ck7uiltqn5ugg1iqhscr6epoe"
           className="maps__map"
         >
-         {searchResultLayer && <DeckGL {...viewport} layers={[searchResultLayer, crimeLayerOne]}>{renderTooltip}{renderTooltipCrime}</DeckGL>  }
+          {searchResultLayer && (
+            <DeckGL
+              {...viewport}
+              layers={[
+                searchResultLayer,
+                crimeLayerOne,
+                crimeLayerTwo,
+                crimeLayerThree,
+                crimeLayerFour,
+                crimeLayerFive
+              ]}
+            >
+              {renderTooltip}
+              {renderTooltipCrime}
+            </DeckGL>
+          )}
           {searchResultLayer &&
             placesData.default.features.map(places => (
               <Marker
@@ -209,33 +330,6 @@ function MapOne() {
               </div>
             </Popup>
           ) : null}
-          {searchResultLayer && (
-            <Source id="mci-data" type="geojson" data={robbData}>
-              <Layer
-                id="robbery data"
-                type="circle"
-                paint={{
-                  "circle-radius": 5,
-                  "circle-color": "#8B0000"
-                }}
-              ></Layer>
-            </Source>
-          )}
-          {searchResultLayer && (
-            <Source id="school-data" type="geojson" data={schoolData}>
-              <Layer
-                id="school data"
-                type="circle"
-                paint={{
-                  "circle-radius": 5,
-                  "circle-color": "#33cc00"
-                }}
-                pickable={true}
-
-              ></Layer>
-            </Source>
-          )}
-
           <div style={fullscreenControlStyle}>
             <FullscreenControl />
           </div>
