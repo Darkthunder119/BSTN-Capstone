@@ -7,7 +7,7 @@ import ReactMapGL, {
   FullscreenControl,
   ScaleControl
 } from "react-map-gl";
-import * as placesData from "../../assets/datasets/Places of Interest and Attractions.geojson.json";
+import * as placesData from "../../assets/datasets/Places of Interest and Attractions.geojson";
 import "./mapone.scss";
 import * as schoolData from "../../assets/datasets/School locations-all types data.geojson";
 import Geocoder from "react-mapbox-gl-geocoder";
@@ -53,7 +53,6 @@ function MapOne() {
     width: "80%",
     height: "600px"
   });
-  const [selectedPlace, setSelectedPlace] = useState(null);
   const [searchResultLayer, setSearchResultLayer] = useState(null);
   const [test, setTest] = useState({
     hoveredObject: "",
@@ -77,6 +76,7 @@ function MapOne() {
   const [checkedBE, setCheckedBE] = useState(false);
   const [checkedRobbery, setCheckedRobbery] = useState(false);
   const [checkedTheft, setCheckedTheft] = useState(false);
+  const [checkedPlaces, setCheckedPlaces] = useState(false);
   // zoom stop rendering and limit zoom and then heatmap/hexagonallayer
   // legend that starts with 2019 stats by default
   // webgl force enable -??
@@ -283,6 +283,22 @@ function MapOne() {
       });
     }
   });
+  const placesLayer = new GeoJsonLayer({
+    id: "Places of Interest",
+    data: placesData,
+    pickable: true,
+    getFillColor: [69, 74, 222, 255],
+    getRadius: 25,
+    pointRadiusMinPixels: 5,
+    pointRadiusMaxPixels: 5,
+    onHover: info => {
+      setSchool({
+        hoveredObject: info.object,
+        pointerX: info.x,
+        pointerY: info.y
+      });
+    }
+  });
 
   // api.walkscore.com/score?format=json&address=${address}&lat=${lat}&lon=${lon}&wsapikey=${API_KEY}`
   // componentDidMount() {
@@ -301,7 +317,7 @@ function MapOne() {
   const queryParams = {
     country: "ca"
   };
-  const layers = [];
+  const layers = [searchResultLayer];
   if (checkedSchool) {
     console.log(checkedSchool);
     layers.push(schoolLayer);
@@ -325,6 +341,10 @@ function MapOne() {
   if (checkedTheft) {
     console.log(checkedTheft);
     layers.push(crimeLayerFive);
+  }
+  if (checkedPlaces) {
+    console.log(checkedPlaces);
+    layers.push(placesLayer);
   }
   return (
     <>
@@ -360,46 +380,6 @@ function MapOne() {
               {renderTooltipSchool}
             </DeckGL>
           )}
-          {searchResultLayer &&
-            placesData.default.features.map(places => (
-              <Marker
-                key={places.properties._id}
-                latitude={places.geometry.coordinates[1]}
-                longitude={places.geometry.coordinates[0]}
-              >
-                <Pins
-                  size={12}
-                  onClick={e => {
-                    e.preventDefault();
-                    setSelectedPlace(places);
-                  }}
-                  styled={{
-                    cursor: "pointer",
-                    fill: "#0000ff",
-                    stroke: "none"
-                  }}
-                />
-              </Marker>
-            ))}
-          {selectedPlace ? (
-            <Popup
-              latitude={selectedPlace.geometry.coordinates[1]}
-              longitude={selectedPlace.geometry.coordinates[0]}
-              onClose={() => setSelectedPlace(null)}
-            >
-              <div className="maps__popup">
-                <h2 className="maps__popup-heading">
-                  {selectedPlace.properties.NAME}
-                </h2>
-                <p className="maps__popup-textone">
-                  {selectedPlace.properties.ATTRACTION_DESC}
-                </p>
-                <p className="maps__popup-texttwo">
-                  {selectedPlace.properties.ADDRESS_FULL}
-                </p>
-              </div>
-            </Popup>
-          ) : null}
           <div style={fullscreenControlStyle}>
             <FullscreenControl />
           </div>
@@ -455,13 +435,13 @@ function MapOne() {
                 />
                 <p style={{ paddingLeft: "5px" }}> Thefts 2014-2019</p>
               </div>
-              {/* <div>
+              <div className="maps__legend">
               <Switch
-                onChange={() => setCheckedSchool(!checkedSchool)}
-                checked={checkedSchool}
+                onChange={() => setCheckedPlaces(!checkedPlaces)}
+                checked={checkedPlaces}
               />
-              <p style={{ paddingLeft: "5px" }}> School Data</p>
-            </div> */}
+              <p style={{ paddingLeft: "5px" }}> Places of Interest</p>
+            </div>
             </div>
           )}
         </ReactMapGL>
