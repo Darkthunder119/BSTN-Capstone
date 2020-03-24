@@ -325,10 +325,17 @@ function MapOne() {
         >
           {"Population: " + neigh.hoveredObject.attributes.Population} <br />
           {"NeighbourHood: " + neigh.hoveredObject.attributes.Neighbourhood} <br />
+          {"Assaults 2019: " + neigh.hoveredObject.attributes.Assault_2019} <br />
+          {"BreakandEnter 2019: " + neigh.hoveredObject.attributes.BreakandEnter_2019} <br />
+          {"Auto Thefts 2019: " + neigh.hoveredObject.attributes.AutoTheft_2019} <br />
+          {"Homicides 2019: " + neigh.hoveredObject.attributes.Homicide_2019} <br />
+          {"Robberies 2019: " + neigh.hoveredObject.attributes.Robbery_2019} <br />
+          {"TheftOver 2019: " + neigh.hoveredObject.attributes.TheftOver_2019} <br />
         </div>
       )
     );
   };
+
   // api.walkscore.com/score?format=json&address=${address}&lat=${lat}&lon=${lon}&wsapikey=${API_KEY}`
   // componentDidMount() {
   //   axios.get(`http://localhost:8080/walk/score?format=json&address=${address}&lat=${lat}&lon=${lon}&wsapikey=${process.env.REACT_APP_WALK_API_KEY}`).then(res=>console.log(res)).catch(err=>console.log(err));
@@ -413,7 +420,7 @@ function MapOne() {
     layers.push(polyLayer);
   }
 
-  console.log(polyData);
+  // console.log(polyData);
   return (
     <>
       <Header />
