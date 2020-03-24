@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
+import axios from "axios";
 import ReactMapGL, {
-  Marker,
-  Popup,
   NavigationControl,
   FullscreenControl,
   ScaleControl
@@ -12,8 +10,12 @@ import "./mapone.scss";
 import * as schoolData from "../../assets/datasets/School locations-all types data.geojson";
 import Geocoder from "react-mapbox-gl-geocoder";
 import Header from "../Header/Header";
-import DeckGL, { GeoJsonLayer } from "deck.gl";
-import Pins from "../Pins/Pins";
+import DeckGL, {
+  GeoJsonLayer,
+  HexagonLayer,
+  ScatterplotLayer,
+  PolygonLayer
+} from "deck.gl";
 import Assault from "../../assets/datasets/Assault_xaaaa.geojson";
 import Auto from "../../assets/datasets/Auto Theft_xaaaa.geojson";
 import BE from "../../assets/datasets/Break and Enter_xaaaa.geojson";
@@ -77,10 +79,16 @@ function MapOne() {
   const [checkedRobbery, setCheckedRobbery] = useState(false);
   const [checkedTheft, setCheckedTheft] = useState(false);
   const [checkedPlaces, setCheckedPlaces] = useState(false);
+  const [checkNeigh, setCheckNeigh] = useState(false);
+  const [neigh, setNeigh] = useState({
+    hoveredObject: "",
+    pointerX: "",
+    pointerY: ""
+  });
+  const [polyData, setPolyData] = useState("");
   // zoom stop rendering and limit zoom and then heatmap/hexagonallayer
   // legend that starts with 2019 stats by default
   // webgl force enable -??
-
   // useEffect(() => {
   //   const listener = e => {
   //     if (e.key === "Escape") {
@@ -300,6 +308,27 @@ function MapOne() {
     }
   });
 
+  const renderTooltipNeigh = () => {
+    return (
+      neigh.hoveredObject && (
+        <div
+          style={{
+            position: "absolute",
+            zIndex: 1,
+            pointerEvents: "none",
+            left: neigh.pointerX,
+            top: neigh.pointerY,
+            backgroundColor: "#000000",
+            color: "#FFFFFF",
+            borderRadius: "5px"
+          }}
+        >
+          {"Population: " + neigh.hoveredObject.attributes.Population} <br />
+          {"NeighbourHood: " + neigh.hoveredObject.attributes.Neighbourhood} <br />
+        </div>
+      )
+    );
+  };
   // api.walkscore.com/score?format=json&address=${address}&lat=${lat}&lon=${lon}&wsapikey=${API_KEY}`
   // componentDidMount() {
   //   axios.get(`http://localhost:8080/walk/score?format=json&address=${address}&lat=${lat}&lon=${lon}&wsapikey=${process.env.REACT_APP_WALK_API_KEY}`).then(res=>console.log(res)).catch(err=>console.log(err));
@@ -314,38 +343,77 @@ function MapOne() {
   // console.log(schoolData);
   // console.log(test);
   // }
+  const getData = () => {
+    axios
+      .get(
+        "https://services.arcgis.com/S9th0jAJ7bqgIRjw/arcgis/rest/services/Neighbourhood_MCI/FeatureServer/0/query?where=1%3D1&outFields=Neighbourhood,Population,Assault_2019,AutoTheft_2019,BreakandEnter_2019,Homicide_2019,Robbery_2019,TheftOver_2019&outSR=4326&f=json"
+      )
+      .then(response => {
+        setPolyData(response.data.features);
+      })
+      .catch(err => console.log(err));
+  };
+  if (!polyData) {
+    getData();
+  }
+  let polyLayer = new PolygonLayer({
+    id: "polygon-layer",
+    data: polyData,
+    pickable: true,
+    stroked: true,
+    filled: true,
+    wireframe: true,
+    visible: true,
+    lineWidthMinPixels: 1,
+    getPolygon: d => d.geometry.rings,
+    getFillColor: d => [
+      d.attributes.Population / 60,
+      140,
+      0
+    ],
+    getLineColor: [80, 80, 80],
+    getLineWidth: 1,
+    onHover: info => {
+      setNeigh({
+        hoveredObject: info.object,
+        pointerX: info.x,
+        pointerY: info.y
+      });
+    }
+  });
+
   const queryParams = {
     country: "ca"
   };
   const layers = [searchResultLayer];
   if (checkedSchool) {
-    console.log(checkedSchool);
     layers.push(schoolLayer);
   }
   if (checkedAssault) {
-    console.log(checkedAssault);
     layers.push(crimeLayerOne);
   }
   if (checkedAuto) {
-    console.log(checkedAuto);
     layers.push(crimeLayerTwo);
   }
   if (checkedBE) {
-    console.log(checkedBE);
     layers.push(crimeLayerThree);
   }
   if (checkedRobbery) {
-    console.log(checkedRobbery);
     layers.push(crimeLayerFour);
   }
   if (checkedTheft) {
-    console.log(checkedTheft);
     layers.push(crimeLayerFive);
   }
   if (checkedPlaces) {
-    console.log(checkedPlaces);
     layers.push(placesLayer);
   }
+  if (
+    checkNeigh && polyData
+  ) {
+    layers.push(polyLayer);
+  }
+
+  console.log(polyData);
   return (
     <>
       <Header />
@@ -378,6 +446,7 @@ function MapOne() {
               {renderTooltip}
               {renderTooltipCrime}
               {renderTooltipSchool}
+              {renderTooltipNeigh}
             </DeckGL>
           )}
           <div style={fullscreenControlStyle}>
@@ -424,9 +493,7 @@ function MapOne() {
                   onChange={() => setCheckedBE(!checkedBE)}
                   checked={checkedBE}
                 />
-                <p style={{ paddingLeft: "5px" }}>
-                  Break and Enters 2014-2019
-                </p>
+                <p style={{ paddingLeft: "5px" }}>Break and Enters 2014-2019</p>
               </div>
               <div className="maps__legend">
                 <Switch
@@ -436,12 +503,19 @@ function MapOne() {
                 <p style={{ paddingLeft: "5px" }}> Thefts 2014-2019</p>
               </div>
               <div className="maps__legend">
-              <Switch
-                onChange={() => setCheckedPlaces(!checkedPlaces)}
-                checked={checkedPlaces}
-              />
-              <p style={{ paddingLeft: "5px" }}> Places of Interest</p>
-            </div>
+                <Switch
+                  onChange={() => setCheckedPlaces(!checkedPlaces)}
+                  checked={checkedPlaces}
+                />
+                <p style={{ paddingLeft: "5px" }}> Places of Interest</p>
+              </div>
+              <div className="maps__legend">
+                <Switch
+                  onChange={() => setCheckNeigh(!checkNeigh)}
+                  checked={checkNeigh}
+                />
+                <p style={{ paddingLeft: "5px" }}> Neighbourhood Boundaries</p>
+              </div>
             </div>
           )}
         </ReactMapGL>
