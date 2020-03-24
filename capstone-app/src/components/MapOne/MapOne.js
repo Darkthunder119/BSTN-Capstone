@@ -19,27 +19,28 @@ import Auto from "../../assets/datasets/Auto Theft_xaaaa.geojson";
 import BE from "../../assets/datasets/Break and Enter_xaaaa.geojson";
 import Robbery from "../../assets/datasets/Robbery_xaaaa.geojson";
 import Theft from "../../assets/datasets/Theft Over_xaaaa.geojson";
+import Switch from "react-switch";
 // const address = encodeURIComponent("2866 battleford road");
 // const lat = "43.7652846";
 // const lon = "-79.1629172";
 const fullscreenControlStyle = {
   position: "absolute",
   top: 0,
-  left: 0,
+  right: 0,
   padding: "10px"
 };
 
 const navStyle = {
   position: "absolute",
   top: 36,
-  left: 0,
+  right: 0,
   padding: "10px"
 };
 
 const scaleControlStyle = {
   position: "absolute",
   bottom: 36,
-  left: 0,
+  right: 0,
   padding: "10px"
 };
 
@@ -69,6 +70,16 @@ function MapOne() {
     pointerX: "",
     pointerY: ""
   });
+
+  const [checkedSchool, setCheckedSchool] = useState(false);
+  const [checkedAssault, setCheckedAssault] = useState(false);
+  const [checkedAuto, setCheckedAuto] = useState(false);
+  const [checkedBE, setCheckedBE] = useState(false);
+  const [checkedRobbery, setCheckedRobbery] = useState(false);
+  const [checkedTheft, setCheckedTheft] = useState(false);
+  // zoom stop rendering and limit zoom and then heatmap/hexagonallayer
+  // legend that starts with 2019 stats by default
+  // webgl force enable -??
 
   // useEffect(() => {
   //   const listener = e => {
@@ -135,8 +146,8 @@ function MapOne() {
             position: "absolute",
             zIndex: 1,
             pointerEvents: "none",
-            left: crimeData.pointerX,
-            top: crimeData.pointerY,
+            left: school.pointerX,
+            top: school.pointerY,
             backgroundColor: "#000000",
             color: "#FFFFFF",
             borderRadius: "5px"
@@ -290,6 +301,31 @@ function MapOne() {
   const queryParams = {
     country: "ca"
   };
+  const layers = [];
+  if (checkedSchool) {
+    console.log(checkedSchool);
+    layers.push(schoolLayer);
+  }
+  if (checkedAssault) {
+    console.log(checkedAssault);
+    layers.push(crimeLayerOne);
+  }
+  if (checkedAuto) {
+    console.log(checkedAuto);
+    layers.push(crimeLayerTwo);
+  }
+  if (checkedBE) {
+    console.log(checkedBE);
+    layers.push(crimeLayerThree);
+  }
+  if (checkedRobbery) {
+    console.log(checkedRobbery);
+    layers.push(crimeLayerFour);
+  }
+  if (checkedTheft) {
+    console.log(checkedTheft);
+    layers.push(crimeLayerFive);
+  }
   return (
     <>
       <Header />
@@ -318,18 +354,7 @@ function MapOne() {
           className="maps__map"
         >
           {searchResultLayer && (
-            <DeckGL
-              {...viewport}
-              layers={[
-                searchResultLayer,
-                crimeLayerOne,
-                crimeLayerTwo,
-                crimeLayerThree,
-                crimeLayerFour,
-                crimeLayerFive,
-                schoolLayer
-              ]}
-            >
+            <DeckGL {...viewport} layers={layers} getCursor={() => "crosshair"}>
               {renderTooltip}
               {renderTooltipCrime}
               {renderTooltipSchool}
@@ -384,6 +409,61 @@ function MapOne() {
           <div style={scaleControlStyle}>
             <ScaleControl />
           </div>
+          {searchResultLayer && (
+            <div className="maps__mainlegend">
+              <div className="maps__legend">
+                <Switch
+                  onChange={() => setCheckedSchool(!checkedSchool)}
+                  checked={checkedSchool}
+                />
+                <p style={{ paddingLeft: "5px" }}> School Data</p>
+              </div>
+              <div className="maps__legend">
+                <Switch
+                  onChange={() => setCheckedAssault(!checkedAssault)}
+                  checked={checkedAssault}
+                />
+                <p style={{ paddingLeft: "5px" }}> Assaults 2014-2019</p>
+              </div>
+              <div className="maps__legend">
+                <Switch
+                  onChange={() => setCheckedAuto(!checkedAuto)}
+                  checked={checkedAuto}
+                />
+                <p style={{ paddingLeft: "5px" }}> Auto Theft 2014-2019</p>
+              </div>
+              <div className="maps__legend">
+                <Switch
+                  onChange={() => setCheckedRobbery(!checkedRobbery)}
+                  checked={checkedRobbery}
+                />
+                <p style={{ paddingLeft: "5px" }}> Robberies 2014-2019</p>
+              </div>
+              <div className="maps__legend">
+                <Switch
+                  onChange={() => setCheckedBE(!checkedBE)}
+                  checked={checkedBE}
+                />
+                <p style={{ paddingLeft: "5px" }}>
+                  Break and Enters 2014-2019
+                </p>
+              </div>
+              <div className="maps__legend">
+                <Switch
+                  onChange={() => setCheckedTheft(!checkedTheft)}
+                  checked={checkedTheft}
+                />
+                <p style={{ paddingLeft: "5px" }}> Thefts 2014-2019</p>
+              </div>
+              {/* <div>
+              <Switch
+                onChange={() => setCheckedSchool(!checkedSchool)}
+                checked={checkedSchool}
+              />
+              <p style={{ paddingLeft: "5px" }}> School Data</p>
+            </div> */}
+            </div>
+          )}
         </ReactMapGL>
       </section>
     </>
