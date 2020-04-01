@@ -5,7 +5,10 @@
         color: $font-text-color-default;
         font-size: 21px;
         text-align: left;
-        padding: 40px 40px;        
+        padding: 40px 40px;
+        @include mobile {
+            padding: 10px;
+            }        
     }
     &__search{
         width: 100vw;
@@ -70,6 +73,9 @@
 
 .react-geocoder{
     width: 100%;
+    @include mobile {
+        width: 95%;
+        }
 }
 .react-geocoder-results{
     display: flex;
@@ -79,6 +85,9 @@
     position: absolute;
     width: 100%;
     background-color: #FFF;
+    @include mobile {
+        width: 95%;
+        }
 }
 .react-geocoder-item{
     width: 80%;
@@ -86,6 +95,10 @@
     border: 2px solid $font-text-color-default;
     text-align: center;
     border-radius: 5px;
+    @include mobile {
+        width: 95%;
+        padding: 0 10px;
+        }
 }
 .react-geocoder-item:hover{
     background-color: $background-default;
@@ -96,10 +109,10 @@ input{
     width: 80%;
     border-radius: 5px;
     line-height: 3;
+    padding: 0 5px;
     border: 2px solid $font-text-color-default;
-}
-.test{
-    background-image: url('../../assets//Images/Heart.svg');
-    width: 12px;
-    height: 12px;
+    @include mobile {
+        width: 95%;
+        padding: 0 10px;
+        }
 }

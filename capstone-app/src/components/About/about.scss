@@ -8,22 +8,39 @@
     &__info{
         text-align: left;
         padding-left: 40px;
+        @include mobile {
+            width: 100%;
+            padding: 0 10px;
+            }
+    }
+    &__box{
+        @include mobile {
+            display: flex;
+            padding: 0 10px;
+            }
     }
     &__stuff{
         width: 900px;
-        
+        @include mobile {
+            width: 80%;
+            }
     }
     &__image{
-        flex: 1 1 50%;
         object-fit: scale-down;
         width: 300px;
         height: 650px;
         padding-left: 10%;
+        @include mobile {
+            width: 25%;
+            }
     }
     &__heading{
         color: $font-text-color-default;
         font-size: 36px;
         background-color: $background-default;
         margin: 0;
+        @include mobile {
+           text-align: center;
+            }
     }
 }

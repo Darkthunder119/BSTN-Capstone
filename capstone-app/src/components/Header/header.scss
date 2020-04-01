@@ -5,14 +5,23 @@ body{
 }
 .header{
     background-color: $background-default;
+    
     &__nav{
         display: flex;
         justify-content: space-between;
+        @include mobile {
+        flex-direction: column;
+        }
     }
     &__side{
         display: flex;
-        width: 40%;
+        width: 50%;
         justify-content: space-between;
+        @include mobile {
+            justify-content: space-evenly;
+            width: 100%;
+            border-top: 2px solid $font-text-color-default;
+            }
     }
     &__links{
         text-decoration: none;
@@ -26,6 +35,9 @@ body{
         font-size: 60px;
         text-align: left;
         padding-left: 40px;
+        @include mobile {
+        text-align: center;    
+        }
     }
     &__text{
         color: #FFF;
@@ -33,9 +45,16 @@ body{
         padding-left: 40px;
         margin: 0;
         padding-bottom: 12px;
+        @include mobile {
+            display: none;
+            }
     }
     &__about{
         margin-right: 40px;
+        @include mobile {
+            margin-right: 0px;
+            }
     }
 }
+
 

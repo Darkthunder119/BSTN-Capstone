@@ -15,11 +15,14 @@ function About() {
             right ordering of domesticity, the family, the home, and the state.
             In Greek mythology, she is the daughter and firstborn child of
             Kronos and Rhea. This is why I chose her as the name of the website.
-            Look at the tree below to see how she relates to other popular Greek Gods and Goddesses:
+            Look at the tree below to see how she relates to other popular Greek
+            Gods and Goddesses:
           </p>
-          <img src={Tree} className="about__stuff" />
-          <img src={hestia} className="about__image" />
-        </div>        
+          <div className="about__box">
+            <img src={Tree} className="about__stuff" />
+            <img src={hestia} className="about__image" />
+          </div>
+        </div>
       </div>
     </article>
   );

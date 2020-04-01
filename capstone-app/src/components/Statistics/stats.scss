@@ -11,6 +11,11 @@
     background-color: $background-default;
     &__text{
         font-size: 21px;
+        @include mobile {
+            width: 100%;
+            padding: 0 10px;
+            text-align: left;
+            }
     }
     &__select{
         margin-top: 32px;
