@@ -58,16 +58,16 @@
         display: flex;
         font-size: 10px;
         align-items: center;
+        line-height: 0.5;
     }
-    &__main-legend{
-        position: "absolute";
+    &__mainlegend{
+        position: absolute;
         top: 0;
-        left: 0;
-        padding: "10px";
-        display: "flex";
-        flex-direction: "column";
-        align-items: center;
+        right: 0;
+        display: flex;
+        flex-direction: column;
         color: $font-text-color-default;
+        width: 30%;
     }
 }
 

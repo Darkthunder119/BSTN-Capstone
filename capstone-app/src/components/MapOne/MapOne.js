@@ -28,21 +28,21 @@ import Switch from "react-switch";
 const fullscreenControlStyle = {
   position: "absolute",
   top: 0,
-  right: 0,
+  left: 0,
   padding: "10px"
 };
 
 const navStyle = {
   position: "absolute",
   top: 36,
-  right: 0,
+  left: 0,
   padding: "10px"
 };
 
 const scaleControlStyle = {
   position: "absolute",
   bottom: 36,
-  right: 0,
+  left: 0,
   padding: "10px"
 };
 
@@ -470,56 +470,56 @@ function MapOne() {
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckedSchool(!checkedSchool)}
-                  checked={checkedSchool}
+                  checked={checkedSchool}  handleDiameter={13} uncheckedIcon={false} checkedIcon={false}  height={15} width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}> School Data</p>
               </div>
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckedAssault(!checkedAssault)}
-                  checked={checkedAssault}
+                  checked={checkedAssault}  handleDiameter={13} uncheckedIcon={false} checkedIcon={false} height={15} width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}> Assaults 2014-2019</p>
               </div>
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckedAuto(!checkedAuto)}
-                  checked={checkedAuto}
+                  checked={checkedAuto}  handleDiameter={13} uncheckedIcon={false} checkedIcon={false} height={15} width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}> Auto Theft 2014-2019</p>
               </div>
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckedRobbery(!checkedRobbery)}
-                  checked={checkedRobbery}
+                  checked={checkedRobbery} handleDiameter={13}  uncheckedIcon={false} checkedIcon={false} height={15} width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}> Robberies 2014-2019</p>
               </div>
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckedBE(!checkedBE)}
-                  checked={checkedBE}
+                  checked={checkedBE}  handleDiameter={13} uncheckedIcon={false} checkedIcon={false} height={15} width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}>Break and Enters 2014-2019</p>
               </div>
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckedTheft(!checkedTheft)}
-                  checked={checkedTheft}
+                  checked={checkedTheft}  handleDiameter={13} uncheckedIcon={false} checkedIcon={false} height={15} width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}> Thefts 2014-2019</p>
               </div>
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckedPlaces(!checkedPlaces)}
-                  checked={checkedPlaces}
+                  checked={checkedPlaces}  handleDiameter={13}  uncheckedIcon={false} checkedIcon={false} height={15} width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}> Places of Interest</p>
               </div>
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckNeigh(!checkNeigh)}
-                  checked={checkNeigh}
+                  checked={checkNeigh} handleDiameter={13}  uncheckedIcon={false} checkedIcon={false} height={15} width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}> Neighbourhood Boundaries</p>
               </div>
