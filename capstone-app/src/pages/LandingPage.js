@@ -1,9 +1,9 @@
 import React from "react";
-import About from "../components/About/About";
-import { Parallax, Background } from "react-parallax";
+import { Parallax} from "react-parallax";
 import HestiaBanner from "../assets/Images/HestiaBanner.png";
 import Header from "../components/Header/Header";
 import Welcome from '../components/Welcome/Welcome';
+import './landing.scss';
 
 function LandingPage() {
   return (
@@ -14,11 +14,7 @@ function LandingPage() {
         bgImage={HestiaBanner}
         bgImageAlt="houseImageBanner"
         strength={-200}
-        style={{
-          height: "650px",
-          shadow: "0px 0px 44px 0px rgba(0, 0, 0, 0.11)",
-          backgroundColor: '#D1735A'
-        }}
+        className="parallax-class"
       >
         <div style={{ height: "200px" }} />
       </Parallax>

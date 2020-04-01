@@ -22,7 +22,7 @@
     &__stuff{
         width: 900px;
         @include mobile {
-            width: 80%;
+            width: 70%;
             }
     }
     &__image{
@@ -32,6 +32,7 @@
         padding-left: 10%;
         @include mobile {
             width: 25%;
+            padding-left: 2%;
             }
     }
     &__heading{

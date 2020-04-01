@@ -1,0 +1,9 @@
+@import "../styles/global";
+
+.parallax-class{
+    height: 650px;
+    background-color: #D1735A;
+    @include mobile{
+        height: 60vh;
+    }
+  }

@@ -4,6 +4,9 @@
     background-color: $background-default;
     color: $font-text-color-default;
     padding: 0 40px;
+    @include mobile {
+        padding: 0 10px;
+    }
     &__heading{
         margin: 0;
         font-size: 32px;
@@ -14,8 +17,17 @@
         padding-top: 32px;
     }
     &__charts{
-        width: 400px;
-        height: 400px;
+        width: 320px;
+        height: 320px;
+        @include tablet {
+            width: 200px;
+            height: 200px;
+        }
+        @include mobile {
+            width: 125px;
+            height: 125px;
+        }
+
     }
     &__text{
         font-size: 21px;
