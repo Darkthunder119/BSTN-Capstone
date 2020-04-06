@@ -447,6 +447,7 @@ function MapOne() {
           onViewportChange={setViewport}
           mapStyle="mapbox://styles/darkthunder119/ck7uiltqn5ugg1iqhscr6epoe"
           className="maps__map"
+          dragPan={false} touchAction="pan-y"
         >
           {searchResultLayer && (
             <DeckGL {...viewport} layers={layers} getCursor={() => "crosshair"}>
