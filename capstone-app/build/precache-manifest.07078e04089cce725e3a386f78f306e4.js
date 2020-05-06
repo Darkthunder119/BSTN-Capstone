@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4de1f6eaabbe7ed1618666df03ee8204",
+    "revision": "c9174bd1a99a3463500dccee6127702c",
     "url": "/index.html"
   },
   {
-    "revision": "c209e892c6feeee844e8",
+    "revision": "9da1858b886139c2d1dd",
     "url": "/static/css/main.2ebdf015.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.fbd8200e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c209e892c6feeee844e8",
-    "url": "/static/js/main.cc7e0133.chunk.js"
+    "revision": "9da1858b886139c2d1dd",
+    "url": "/static/js/main.297affcc.chunk.js"
   },
   {
     "revision": "06e03f7ec326907a78a4",
@@ -36,8 +36,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/Break and Enter_xaaaa.248fe349.geojson"
   },
   {
-    "revision": "bc865e89139a18cb75531166b829bcc0",
-    "url": "/static/media/HestiaBanner.bc865e89.png"
+    "revision": "93ca646d504be1f3ba41a12934ad1c71",
+    "url": "/static/media/HestiaBanner.93ca646d.jpg"
   },
   {
     "revision": "faae3d815d1e111a255da3bafda987be",

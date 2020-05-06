@@ -1,6 +1,6 @@
 import React from "react";
 import { Parallax} from "react-parallax";
-import HestiaBanner from "../assets/Images/HestiaBanner.png";
+import HestiaBanner from "../assets/Images/HestiaBanner.jpg";
 import Header from "../components/Header/Header";
 import Welcome from '../components/Welcome/Welcome';
 import './landing.scss';

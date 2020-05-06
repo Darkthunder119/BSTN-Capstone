@@ -10,7 +10,7 @@ class Welcome extends React.Component {
           <div className="welcome__chartbox">
             <ReactMinimalPieChart
               className="welcome__charts"
-              animate={true}
+              animate={false}
               animationDuration={5500}
               animationEasing="ease-out"
               cx={50}
@@ -41,7 +41,7 @@ class Welcome extends React.Component {
             />
             <ReactMinimalPieChart
               className="welcome__charts"
-              animate={true}
+              animate={false}
               animationDuration={5500}
               animationEasing="ease-out"
               cx={50}
@@ -72,7 +72,7 @@ class Welcome extends React.Component {
             />
             <ReactMinimalPieChart
               className="welcome__charts"
-              animate={true}
+              animate={false}
               animationDuration={5500}
               animationEasing="ease-out"
               cx={50}
