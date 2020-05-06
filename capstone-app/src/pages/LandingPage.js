@@ -9,15 +9,11 @@ function LandingPage() {
   return (
     <>
       <Header />
-      <Parallax
-        blur={{ min: -15, max: 30 }}
-        bgImage={HestiaBanner}
-        bgImageAlt="houseImageBanner"
-        strength={-200}
+      <div
         className="parallax-class"
       >
-        <div style={{ height: "200px" }} />
-      </Parallax>
+        <img src={HestiaBanner} className="parallax-class"/>
+      </div>
       <Welcome />
     </>
   );
