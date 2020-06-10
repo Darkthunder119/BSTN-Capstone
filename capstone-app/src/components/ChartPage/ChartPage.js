@@ -1,6 +1,6 @@
 import React from "react";
 import Chart from "react-apexcharts";
-import '../Statistics/stats.scss'
+import '../../pages/stats.scss'
 class ChartPage extends React.Component {
   constructor(props) {
     super(props);

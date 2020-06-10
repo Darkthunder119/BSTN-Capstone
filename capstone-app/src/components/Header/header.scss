@@ -1,60 +1,64 @@
-@import '../../styles/global';
+@import "../../styles/global";
 
-body{
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
 }
-.header{
-    background-color: $background-default;
-    
-    &__nav{
-        display: flex;
-        justify-content: space-between;
-        @include mobile {
-        flex-direction: column;
-        }
+.header {
+  background-color: $background-default;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    @include mobile {
+      flex-direction: column;
     }
-    &__side{
-        display: flex;
-        width: 50%;
-        justify-content: space-between;
-        @include mobile {
-            justify-content: space-evenly;
-            width: 100%;
-            border-top: 2px solid $font-text-color-default;
-            }
+  }
+  &__side {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    @include mobile {
+      justify-content: space-evenly;
+      width: 100%;
+      border-top: 2px solid $font-text-color-default;
     }
-    &__links{
-        text-decoration: none;
-        color: $font-text-color-default;
+  }
+  &__links {
+    text-decoration: none;
+    color: $font-text-color-default;
+  }
+  &__links:hover {
+    color: $font-text-darker;
+  }
+  &__heading {
+    margin: 0;
+    font-size: 60px;
+    text-align: left;
+    padding-left: 40px;
+    @include mobile {
+      text-align: center;
     }
-    &__links:hover{
-        color: darken($color: $font-text-color-default, $amount: 4.75);
+  }
+  &__link:hover {
+    border-bottom: $font-text-darker solid 0.2rem;
+  }
+  &__link{
+    margin-right: 0.5rem;
+  }
+  &__text {
+    color: #fff;
+    text-align: left;
+    padding-left: 40px;
+    margin: 0;
+    padding-bottom: 12px;
+    @include mobile {
+      display: none;
     }
-    &__heading{
-        margin: 0;
-        font-size: 60px;
-        text-align: left;
-        padding-left: 40px;
-        @include mobile {
-        text-align: center;    
-        }
+  }
+  &__about {
+    margin-right: 40px;
+    @include mobile {
+      margin-right: 0px;
     }
-    &__text{
-        color: #FFF;
-        text-align: left;
-        padding-left: 40px;
-        margin: 0;
-        padding-bottom: 12px;
-        @include mobile {
-            display: none;
-            }
-    }
-    &__about{
-        margin-right: 40px;
-        @include mobile {
-            margin-right: 0px;
-            }
-    }
+  }
 }
-
-

@@ -1,5 +1,4 @@
 import React from "react";
-import { Parallax} from "react-parallax";
 import HestiaBanner from "../assets/Images/HestiaBanner.jpg";
 import Header from "../components/Header/Header";
 import Welcome from '../components/Welcome/Welcome';
@@ -12,7 +11,7 @@ function LandingPage() {
       <div
         className="parallax-class"
       >
-        <img src={HestiaBanner} className="parallax-class"/>
+        <img src={HestiaBanner} className="parallax-class" alt="BannerHero"/>
       </div>
       <Welcome />
     </>

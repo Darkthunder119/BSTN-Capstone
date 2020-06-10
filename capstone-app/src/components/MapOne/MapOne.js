@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import ReactMapGL, {
   NavigationControl,
@@ -447,7 +447,7 @@ function MapOne() {
           onViewportChange={setViewport}
           mapStyle="mapbox://styles/darkthunder119/ck7uiltqn5ugg1iqhscr6epoe"
           className="maps__map"
-          dragPan={false} touchAction="pan-y"
+          dragPan={true} touchAction="pan-y"
         >
           {searchResultLayer && (
             <DeckGL {...viewport} layers={layers} getCursor={() => "crosshair"}>

@@ -5,12 +5,12 @@ class Welcome extends React.Component {
   render() {
     return (
       <article className="welcome">
-        <h2 className="welcome__heading">Welcome To HESTIA!</h2>
-        <div className="welcome__text">The website provides stats on your neighbourhood's crime from 2014 to 2019 as provided by the Toronto Police OpenDataBase. Other datasets including Place of Interest, schooling and TTC data is also available.</div>
+        <h2 className="welcome__heading">Welcome to HESTIA!</h2>
+        <div className="welcome__text">This website provides stats on your neighbourhood's crime from 2014 to 2019 as provided by the Toronto Police OpenDataBase. Other datasets including Place of Interest, schooling and TTC data is also available.</div>
           <div className="welcome__chartbox">
             <ReactMinimalPieChart
               className="welcome__charts"
-              animate={false}
+              animate={true}
               animationDuration={5500}
               animationEasing="ease-out"
               cx={50}
@@ -41,7 +41,7 @@ class Welcome extends React.Component {
             />
             <ReactMinimalPieChart
               className="welcome__charts"
-              animate={false}
+              animate={true}
               animationDuration={5500}
               animationEasing="ease-out"
               cx={50}
@@ -72,7 +72,7 @@ class Welcome extends React.Component {
             />
             <ReactMinimalPieChart
               className="welcome__charts"
-              animate={false}
+              animate={true}
               animationDuration={5500}
               animationEasing="ease-out"
               cx={50}

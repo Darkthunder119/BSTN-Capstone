@@ -4,6 +4,7 @@
     background-color: $background-default;
     color: $font-text-color-default;
     padding: 0 40px;
+    padding-top: 16px;
     @include mobile {
         padding: 0 10px;
     }
@@ -38,6 +39,7 @@
         display: flex;
         justify-content: space-evenly;
         font-size: 21px;
+        text-align: center;
     }
     &__para1{
         flex: 1 1 33%;

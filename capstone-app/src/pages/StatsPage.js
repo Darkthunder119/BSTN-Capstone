@@ -1,7 +1,7 @@
 import React from "react";
 import Axios from "axios";
-import ChartPage from "../ChartPage/ChartPage";
-import Header from '../Header/Header'
+import ChartPage from "../components/ChartPage/ChartPage";
+import Header from '../components/Header/Header'
 import './stats.scss'
 import Loader from 'react-loader-spinner';
 class StatsPage extends React.Component {

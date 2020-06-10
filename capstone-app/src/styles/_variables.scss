@@ -2,3 +2,4 @@ $font-text-color-default : #263D4D;
 $background-default : #D1735A;
 $desktop-breakpoint:1200px;
 $tablet-breakpoint: 768px;
+$font-text-darker: darken($color: $font-text-color-default, $amount: 4.75);
