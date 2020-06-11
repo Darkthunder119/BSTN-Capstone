@@ -45,7 +45,7 @@ class ChartPage extends React.Component {
           options={this.state.options}
           series={[{ name: this.props.namer, data: this.props.assault }]}
           type="bar"
-          height="700"
+          height="70%"
           width="90%"
           className="stats__graph"
         />

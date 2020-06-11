@@ -53,7 +53,7 @@ function MapOne() {
     longitude: -79.2916,
     zoom: 10.34,
     width: "80%",
-    height: "600px"
+    height: "500px"
   });
   const [searchResultLayer, setSearchResultLayer] = useState(null);
   const [test, setTest] = useState({

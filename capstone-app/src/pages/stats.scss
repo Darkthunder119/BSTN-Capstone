@@ -9,6 +9,7 @@
 .stats{
     color: $font-text-color-default;
     background-color: $background-default;
+    height: 100vh;
     &__text{
         font-size: 21px;
         @include mobile {
@@ -24,6 +25,10 @@
         width: 400px;
         text-align: center;
         border-radius: 5px;
+        @include mobile {
+            width: 80%;
+            margin: 0 10px;
+            }
     }
     &__options{
         color: $font-text-color-default;
