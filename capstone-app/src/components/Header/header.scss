@@ -1,8 +1,5 @@
 @import "../../styles/global";
 
-body {
-  overflow-x: hidden;
-}
 .header {
   background-color: $background-default;
 
@@ -41,6 +38,7 @@ body {
   }
   &__link:hover {
     border-bottom: $font-text-darker solid 0.2rem;
+    margin-bottom: -0.2rem;
   }
   &__link{
     margin-right: 0.5rem;

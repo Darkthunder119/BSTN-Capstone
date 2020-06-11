@@ -5,6 +5,7 @@ import StatsPage from "./pages/StatsPage";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import AboutPage from './pages/AboutPage/AboutPage';
+import './App.scss';
 // import Header from "./components/Header/Header";
 
 function App() {
