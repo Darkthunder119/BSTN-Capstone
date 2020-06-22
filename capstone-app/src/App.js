@@ -6,6 +6,10 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import AboutPage from './pages/AboutPage/AboutPage';
 import './App.scss';
+// import analytics from './analytics'
+
+// analytics.enablePlugin();
+// analytics.page();
 // import Header from "./components/Header/Header";
 
 function App() {
@@ -17,6 +21,8 @@ function App() {
           name="description"
           content="Hestia, a neighbourhood crime information site"
         />
+        <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script> 
+        <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="SAnalytics"/></noscript>
       </Helmet>
       <BrowserRouter>
           {/* <Header /> */}

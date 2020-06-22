@@ -12,8 +12,8 @@ import Geocoder from "react-mapbox-gl-geocoder";
 import Header from "../Header/Header";
 import DeckGL, {
   GeoJsonLayer,
-  HexagonLayer,
-  ScatterplotLayer,
+  // HexagonLayer,
+  // ScatterplotLayer,
   PolygonLayer
 } from "deck.gl";
 import Assault from "../../assets/datasets/Assault_xaaaa.geojson";
