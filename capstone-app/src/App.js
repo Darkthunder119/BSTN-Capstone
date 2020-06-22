@@ -21,8 +21,8 @@ function App() {
           name="description"
           content="Hestia, a neighbourhood crime information site"
         />
-        <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script> 
-        <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="SAnalytics"/></noscript>
+        {/* <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script> 
+        <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="SAnalytics"/></noscript> */}
       </Helmet>
       <BrowserRouter>
           {/* <Header /> */}
