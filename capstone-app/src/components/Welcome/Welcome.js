@@ -14,7 +14,6 @@ class Welcome extends React.Component {
   listColors = ["#d36c15", "#49adcc", "#387c59", "#f460ab","#32b804","#e54502","#286167"]
   render() {
     const { randData } = this.props;
-    if (randData) {
       return (
         <article className="welcome">
           <h2 className="welcome__heading">Welcome to HESTIA!</h2>
@@ -25,7 +24,7 @@ class Welcome extends React.Component {
             available. 
             <p>The following pie charts show crime in 2019 for 3 random Neighbourhoods in Toronto separated into : Assaults, Auto Thefts, Break and Enters, Homicides, Robberies and Theft Overs.</p>
           </div>
-          <div className="welcome__chartbox">
+          {randData ? (<><div className="welcome__chartbox">
             {randData.map((val,i) => {
               let arr = Object.entries(val.attributes);
               arr.splice(0,2);
@@ -56,11 +55,7 @@ class Welcome extends React.Component {
             <p className="welcome__para3">
               {randData[2].attributes.Neighbourhood}
             </p>
-          </div>
-        </article>
-      );
-    } else {
-      return (
+          </div></>) : (
         <Loader
           type="Grid"
           color="#263D4D"
@@ -72,8 +67,9 @@ class Welcome extends React.Component {
             paddingTop: "5rem",
           }}
         />
+      )}
+        </article>
       );
-    }
   }
 }
 
