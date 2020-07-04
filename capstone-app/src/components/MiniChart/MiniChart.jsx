@@ -8,8 +8,6 @@ export default function MiniChart({data, totalValue, isAnimated}) {
       animate={isAnimated}
       animationDuration={5000}
       animationEasing="ease-out"
-      // cx={50}
-      // cy={50}
       data={data}
       label
       labelPosition={70}

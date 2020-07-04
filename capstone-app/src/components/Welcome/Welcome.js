@@ -3,20 +3,15 @@ import "./welcome.scss";
 import MiniChart from "../MiniChart/MiniChart";
 import Loader from "react-loader-spinner";
 class Welcome extends React.Component {
-  getRandomColor = () => {
-    var letters = "0123456789ABCDEF";
-    var color = "#";
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
-  //data needs to look like below:
-  // {
-  //   title: "Assault",
-  //   color: "#263D4D",
-  //   value: data
-  // }
+  // getRandomColor = () => {
+  //   var letters = "0123456789ABCDEF";
+  //   var color = "#";
+  //   for (var i = 0; i < 6; i++) {
+  //     color += letters[Math.floor(Math.random() * 16)];
+  //   }
+  //   return color;
+  // };
+  listColors = ["#d36c15", "#49adcc", "#387c59", "#f460ab","#32b804","#e54502","#286167"]
   render() {
     const { randData } = this.props;
     if (randData) {
@@ -27,7 +22,8 @@ class Welcome extends React.Component {
             This website provides stats on your neighbourhood's crime from 2014
             to 2019 as provided by the Toronto Police OpenDataBase. Other
             datasets including Place of Interest, schooling and TTC data is also
-            available.
+            available. 
+            <p>The following pie charts show crime in 2019 for 3 random Neighbourhoods in Toronto separated into : Assaults, Auto Thefts, Break and Enters, Homicides, Robberies and Theft Overs.</p>
           </div>
           <div className="welcome__chartbox">
             {randData.map((val,i) => {
@@ -37,7 +33,7 @@ class Welcome extends React.Component {
               let totalValue = 0;
               for(let i=0; i<arr.length; i++){
                 let title = arr[i][0];
-                let color = this.getRandomColor();
+                let color = this.listColors[i];
                 let data = arr[i][1];
                 totalValue = totalValue + data;
                 arr2.push({title:title,color:color,value:data});

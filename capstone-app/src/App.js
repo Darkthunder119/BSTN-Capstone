@@ -2,7 +2,7 @@ import React from "react";
 import MapOne from "./components/MapOne/MapOne";
 import { Helmet } from "react-helmet";
 import StatsPage from "./pages/StatsPage";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import AboutPage from './pages/AboutPage/AboutPage';
 import './App.scss';
@@ -24,7 +24,6 @@ function App() {
         {/* <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script> 
         <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="SAnalytics"/></noscript> */}
       </Helmet>
-      <BrowserRouter>
           {/* <Header /> */}
         <Switch>
           <Route exact path="/" component={LandingPage} />
@@ -32,7 +31,6 @@ function App() {
           <Route path="/about" component={AboutPage} />
           <Route path="/stats" component={StatsPage} />
         </Switch>
-      </BrowserRouter>
     </div>
   );
 }
