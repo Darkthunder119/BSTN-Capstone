@@ -4,6 +4,7 @@
     height: 650px;
     width: 100%;
     background-color: #D1735A;
+    object-fit: cover;
     @include mobile{
         height: 60vh;
         object-fit: cover;

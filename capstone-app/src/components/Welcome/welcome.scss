@@ -5,6 +5,7 @@
     color: $font-text-color-default;
     padding: 0 40px;
     padding-top: 16px;
+    height: 100vh;
     @include mobile {
         padding: 0 10px;
     }
@@ -20,6 +21,7 @@
     &__charts{
         width: 320px;
         height: 320px;
+        flex: 1 1 33%;
         @include tablet {
             width: 200px;
             height: 200px;
