@@ -12,7 +12,7 @@
     "@testing-library/user-event": "^7.2.1",
     "@turf/bbox": "^6.0.1",
     "apexcharts": "^3.17.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "deck.gl": "6.3.0",
     "helmet": "^3.21.3",
     "immutable": "^4.0.0-rc.12",
