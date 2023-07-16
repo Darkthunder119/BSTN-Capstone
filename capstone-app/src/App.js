@@ -4,8 +4,8 @@ import { Helmet } from "react-helmet";
 import StatsPage from "./pages/StatsPage";
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import AboutPage from './pages/AboutPage/AboutPage';
-import './App.scss';
+import AboutPage from "./pages/AboutPage/AboutPage";
+import "./App.scss";
 // import analytics from './analytics'
 
 // analytics.enablePlugin();
@@ -14,7 +14,7 @@ import './App.scss';
 
 function App() {
   return (
-    <div className="App" style={{textAlign:"center"}}>
+    <div className="App" style={{ textAlign: "center" }}>
       <Helmet>
         <title>Hestia</title>
         <meta
@@ -24,13 +24,13 @@ function App() {
         {/* <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script> 
         <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="SAnalytics"/></noscript> */}
       </Helmet>
-          {/* <Header /> */}
-        <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route path="/map" component={MapOne} />
-          <Route path="/about" component={AboutPage} />
-          <Route path="/stats" component={StatsPage} />
-        </Switch>
+      {/* <Header /> */}
+      <Switch>
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/map" component={MapOne} />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/stats" component={StatsPage} />
+      </Switch>
     </div>
   );
 }

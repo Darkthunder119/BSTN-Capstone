@@ -1,7 +1,7 @@
 import React from "react";
 import "./welcome.scss";
 import MiniChart from "../MiniChart/MiniChart";
-import Loader from "react-loader-spinner";
+import { Grid } from "react-loader-spinner";
 class Welcome extends React.Component {
   // getRandomColor = () => {
   //   var letters = "0123456789ABCDEF";
@@ -73,8 +73,7 @@ class Welcome extends React.Component {
             </div>
           </>
         ) : (
-          <Loader
-            type="Grid"
+          <Grid
             color="#263D4D"
             height={100}
             width={100}
