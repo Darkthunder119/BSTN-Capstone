@@ -9,7 +9,6 @@ import * as placesData from "../../assets/datasets/Places of Interest and Attrac
 import "./mapone.scss";
 import * as schoolData from "../../assets/datasets/School locations-all types data.geojson";
 import Geocoder from "react-mapbox-gl-geocoder";
-import Header from "../Header/Header";
 import DeckGL, {
   GeoJsonLayer,
   // HexagonLayer,
@@ -430,7 +429,6 @@ function MapOne() {
   // console.log(polyData);
   return (
     <>
-      <Header />
       <div className="maps__text">
         The Following Map lets you search for any area and shows previous
         crimes, places of interest and schools in the area. To see crimes,

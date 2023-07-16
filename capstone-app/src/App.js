@@ -1,7 +1,7 @@
 import React from "react";
-import MapOne from "./components/MapOne/MapOne";
 import { Helmet } from "react-helmet";
 import StatsPage from "./pages/StatsPage";
+import MapPage from "./pages/MapPage";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import AboutPage from "./pages/AboutPage/AboutPage";
@@ -22,7 +22,7 @@ function App() {
         {/* <Header /> */}
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
-          <Route path="/map" element={<MapOne />} />
+          <Route path="/map" element={<MapPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/stats" element={<StatsPage />} />
           <Route path="*" element={<ErrorPage />} />
