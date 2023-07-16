@@ -6,8 +6,8 @@
     background-color: $background-default;
     padding-bottom: 12px;
     &__info{
-        text-align: left;
-        padding-left: 40px;
+        text-align: center;
+        padding: 0 2.5rem;
         @include mobile {
             width: 100%;
             padding: 0 10px;
@@ -15,14 +15,15 @@
     }
     &__box{
         display: flex;
+        justify-content: center;
         @include mobile {
             padding: 0 10px;
             flex-direction: column;
             }
     }
     &__stuff{
-        width: 70%;
-        height: 70%;
+        width: 33%;
+        height: 50%;
         align-self:center;
         @include mobile {
             width: 100%;
@@ -42,24 +43,31 @@
     }
     &__heading{
         color: $font-text-color-default;
-        font-size: 36px;
+        font-size: 2.25rem;
         background-color: $background-default;
         margin: 0;
         @include mobile {
            text-align: center;
+           padding-top: 1.25rem;
             }
     }
     &__links-container{
         display: flex;
         justify-content: center;
-        margin-bottom: 32px;
+        margin-bottom: 2rem;
+        font-size: 2rem;
     }
     &__links{
         text-decoration: none;
         color: $font-text-color-default;
-        margin-left: 8px;
+        margin-left: 0.5rem;
     }
     &__icon{
-        margin-right: 8px;
+        margin-right: 0.5rem;
     }
+}
+
+.article {
+    background-color: $background-default;
+    height: 100%;
 }

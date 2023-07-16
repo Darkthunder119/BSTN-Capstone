@@ -2,21 +2,17 @@ import React from "react";
 import hestia from "../../assets/Images/hestia.jpg";
 import "./about.scss";
 import Tree from "../../assets/Images/Tree.png";
-import {
-  faLinkedin,
-  faGithub,
-  faBitbucket,
-} from "@fortawesome/free-brands-svg-icons";
-import { faFile } from "@fortawesome/free-solid-svg-icons";
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faFolderOpen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function About() {
   return (
-    <article>
+    <article className="article">
       <h2 className="about__heading">ABOUT HESTIA</h2>
       <div className="about">
         <div className="about__info">
-          <p>
+          <p className="about__info">
             In Ancient Greek religion, Hestia (/ˈhɛstiə, ˈhɛstʃə/; Greek: Ἑστία,
             "hearth" or "fireside") is the virgin goddess of the hearth, the
             right ordering of domesticity, the family, the home, and the state.
@@ -34,7 +30,7 @@ function About() {
       <h2 className="about__heading">ABOUT ME</h2>
       <div className="about">
         <div className="about__info">
-          <p>
+          <p className="about__info">
             Hi my name is Gurtaj and this is my capstone project for
             BrainStation's Web Developement Winter 2020 cohort. This project
             uses React, DeckGL and D3js to display and aggregate Crime and
@@ -43,21 +39,26 @@ function About() {
             neighbourhoods.
           </p>
           <div className="about__links-container">
-            <a href="https://gurtajchhabra.surge.sh/#/" className="about__links">
-              <FontAwesomeIcon icon={faFile}  className="about__icon"/>
+            <a
+              href="https://gurtajchhabra.vercel.app/"
+              className="about__links"
+            >
+              <FontAwesomeIcon icon={faFolderOpen} className="about__icon" />
               Portfolio
             </a>
-            <a href="https://www.linkedin.com/in/gurtajchhabra/" className="about__links">
-              <FontAwesomeIcon icon={faLinkedin}  className="about__icon"/>
+            <a
+              href="https://www.linkedin.com/in/gurtajchhabra/"
+              className="about__links"
+            >
+              <FontAwesomeIcon icon={faLinkedin} className="about__icon" />
               LinkedIn
             </a>
-            <a href="https://github.com/Darkthunder119" className="about__links">
-              <FontAwesomeIcon icon={faGithub}  className="about__icon"/>
+            <a
+              href="https://github.com/Darkthunder119"
+              className="about__links"
+            >
+              <FontAwesomeIcon icon={faGithub} className="about__icon" />
               GitHub
-            </a>
-            <a href="https://bitbucket.org/gurtajchhabra/" className="about__links">
-              <FontAwesomeIcon icon={faBitbucket} className="about__icon" />
-              Bitbucket
             </a>
           </div>
         </div>

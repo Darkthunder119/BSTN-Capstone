@@ -16,7 +16,6 @@
     "deck.gl": "6.3.0",
     "helmet": "^3.21.3",
     "immutable": "^4.0.0-rc.12",
-    "node-sass": "^4.13.1",
     "react": "^16.13.0",
     "react-advanced-banner": "^1.0.2",
     "react-apexcharts": "^1.3.6",
@@ -29,13 +28,16 @@
     "react-minimal-pie-chart": "^6.0.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
-    "react-switch": "^5.0.1"
+    "react-switch": "^5.0.1",
+    "sass": "^1.63.6",
+    "source-map-explorer": "^2.5.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "eslintConfig": {
     "extends": "react-app"

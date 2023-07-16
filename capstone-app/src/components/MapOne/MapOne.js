@@ -3,7 +3,7 @@ import axios from "axios";
 import ReactMapGL, {
   NavigationControl,
   FullscreenControl,
-  ScaleControl
+  ScaleControl,
 } from "react-map-gl";
 import * as placesData from "../../assets/datasets/Places of Interest and Attractions.geojson";
 import "./mapone.scss";
@@ -14,7 +14,7 @@ import DeckGL, {
   GeoJsonLayer,
   // HexagonLayer,
   // ScatterplotLayer,
-  PolygonLayer
+  PolygonLayer,
 } from "deck.gl";
 import Assault from "../../assets/datasets/Assault_xaaaa.geojson";
 import Auto from "../../assets/datasets/Auto Theft_xaaaa.geojson";
@@ -29,21 +29,21 @@ const fullscreenControlStyle = {
   position: "absolute",
   top: 0,
   left: 0,
-  padding: "10px"
+  padding: "10px",
 };
 
 const navStyle = {
   position: "absolute",
   top: 36,
   left: 0,
-  padding: "10px"
+  padding: "10px",
 };
 
 const scaleControlStyle = {
   position: "absolute",
   bottom: 36,
   left: 0,
-  padding: "10px"
+  padding: "10px",
 };
 
 function MapOne() {
@@ -53,23 +53,23 @@ function MapOne() {
     longitude: -79.2916,
     zoom: 10.34,
     width: "80%",
-    height: "500px"
+    height: "500px",
   });
   const [searchResultLayer, setSearchResultLayer] = useState(null);
   const [test, setTest] = useState({
     hoveredObject: "",
     pointerX: "",
-    pointerY: ""
+    pointerY: "",
   });
   const [crimeData, setCrimeData] = useState({
     hoveredObject: "",
     pointerX: "",
-    pointerY: ""
+    pointerY: "",
   });
   const [school, setSchool] = useState({
     hoveredObject: "",
     pointerX: "",
-    pointerY: ""
+    pointerY: "",
   });
 
   const [checkedSchool, setCheckedSchool] = useState(false);
@@ -83,7 +83,7 @@ function MapOne() {
   const [neigh, setNeigh] = useState({
     hoveredObject: "",
     pointerX: "",
-    pointerY: ""
+    pointerY: "",
   });
   const [polyData, setPolyData] = useState("");
   // zoom stop rendering and limit zoom and then heatmap/hexagonallayer
@@ -114,7 +114,7 @@ function MapOne() {
             top: test.pointerY,
             backgroundColor: "#000000",
             color: "#FFFFFF",
-            borderRadius: "5px"
+            borderRadius: "5px",
           }}
         >
           {test.hoveredObject.message}
@@ -135,7 +135,7 @@ function MapOne() {
             top: crimeData.pointerY,
             backgroundColor: "#000000",
             color: "#FFFFFF",
-            borderRadius: "5px"
+            borderRadius: "5px",
           }}
         >
           {crimeData.hoveredObject.properties.MCI} <br />
@@ -158,7 +158,7 @@ function MapOne() {
             top: school.pointerY,
             backgroundColor: "#000000",
             color: "#FFFFFF",
-            borderRadius: "5px"
+            borderRadius: "5px",
           }}
         >
           {school.hoveredObject.properties.NAME} <br />
@@ -179,13 +179,13 @@ function MapOne() {
         getRadius: 25,
         pointRadiusMinPixels: 5,
         pointRadiusMaxPixels: 5,
-        onHover: info => {
+        onHover: (info) => {
           setTest({
             hoveredObject: info.object,
             pointerX: info.x,
-            pointerY: info.y
+            pointerY: info.y,
           });
-        }
+        },
       })
     );
   };
@@ -198,13 +198,13 @@ function MapOne() {
     getRadius: 25,
     pointRadiusMinPixels: 5,
     pointRadiusMaxPixels: 5,
-    onHover: info => {
+    onHover: (info) => {
       setCrimeData({
         hoveredObject: info.object,
         pointerX: info.x,
-        pointerY: info.y
+        pointerY: info.y,
       });
-    }
+    },
   });
 
   const crimeLayerTwo = new GeoJsonLayer({
@@ -215,13 +215,13 @@ function MapOne() {
     getRadius: 25,
     pointRadiusMinPixels: 5,
     pointRadiusMaxPixels: 5,
-    onHover: info => {
+    onHover: (info) => {
       setCrimeData({
         hoveredObject: info.object,
         pointerX: info.x,
-        pointerY: info.y
+        pointerY: info.y,
       });
-    }
+    },
   });
 
   const crimeLayerThree = new GeoJsonLayer({
@@ -232,13 +232,13 @@ function MapOne() {
     getRadius: 25,
     pointRadiusMinPixels: 5,
     pointRadiusMaxPixels: 5,
-    onHover: info => {
+    onHover: (info) => {
       setCrimeData({
         hoveredObject: info.object,
         pointerX: info.x,
-        pointerY: info.y
+        pointerY: info.y,
       });
-    }
+    },
   });
 
   const crimeLayerFour = new GeoJsonLayer({
@@ -249,13 +249,13 @@ function MapOne() {
     getRadius: 25,
     pointRadiusMinPixels: 5,
     pointRadiusMaxPixels: 5,
-    onHover: info => {
+    onHover: (info) => {
       setCrimeData({
         hoveredObject: info.object,
         pointerX: info.x,
-        pointerY: info.y
+        pointerY: info.y,
       });
-    }
+    },
   });
 
   const schoolLayer = new GeoJsonLayer({
@@ -266,13 +266,13 @@ function MapOne() {
     getRadius: 25,
     pointRadiusMinPixels: 5,
     pointRadiusMaxPixels: 5,
-    onHover: info => {
+    onHover: (info) => {
       setSchool({
         hoveredObject: info.object,
         pointerX: info.x,
-        pointerY: info.y
+        pointerY: info.y,
       });
-    }
+    },
   });
 
   const crimeLayerFive = new GeoJsonLayer({
@@ -283,13 +283,13 @@ function MapOne() {
     getRadius: 25,
     pointRadiusMinPixels: 5,
     pointRadiusMaxPixels: 5,
-    onHover: info => {
+    onHover: (info) => {
       setCrimeData({
         hoveredObject: info.object,
         pointerX: info.x,
-        pointerY: info.y
+        pointerY: info.y,
       });
-    }
+    },
   });
   const placesLayer = new GeoJsonLayer({
     id: "Places of Interest",
@@ -299,13 +299,13 @@ function MapOne() {
     getRadius: 25,
     pointRadiusMinPixels: 5,
     pointRadiusMaxPixels: 5,
-    onHover: info => {
+    onHover: (info) => {
       setSchool({
         hoveredObject: info.object,
         pointerX: info.x,
-        pointerY: info.y
+        pointerY: info.y,
       });
-    }
+    },
   });
 
   const renderTooltipNeigh = () => {
@@ -320,17 +320,30 @@ function MapOne() {
             top: neigh.pointerY,
             backgroundColor: "#000000",
             color: "#FFFFFF",
-            borderRadius: "5px"
+            borderRadius: "5px",
           }}
         >
           {"Population: " + neigh.hoveredObject.attributes.Population} <br />
-          {"NeighbourHood: " + neigh.hoveredObject.attributes.Neighbourhood} <br />
-          {"Assaults 2019: " + neigh.hoveredObject.attributes.Assault_2019} <br />
-          {"BreakandEnter 2019: " + neigh.hoveredObject.attributes.BreakandEnter_2019} <br />
-          {"Auto Thefts 2019: " + neigh.hoveredObject.attributes.AutoTheft_2019} <br />
-          {"Homicides 2019: " + neigh.hoveredObject.attributes.Homicide_2019} <br />
-          {"Robberies 2019: " + neigh.hoveredObject.attributes.Robbery_2019} <br />
-          {"TheftOver 2019: " + neigh.hoveredObject.attributes.TheftOver_2019} <br />
+          {"NeighbourHood: " +
+            neigh.hoveredObject.attributes.Neighbourhood}{" "}
+          <br />
+          {"Assaults 2019: " + neigh.hoveredObject.attributes.Assault_2019}{" "}
+          <br />
+          {"BreakandEnter 2019: " +
+            neigh.hoveredObject.attributes.BreakandEnter_2019}{" "}
+          <br />
+          {"Auto Thefts 2019: " +
+            neigh.hoveredObject.attributes.AutoTheft_2019}{" "}
+          <br />
+          {"Homicides 2019: " +
+            neigh.hoveredObject.attributes.Homicide_2019}{" "}
+          <br />
+          {"Robberies 2019: " +
+            neigh.hoveredObject.attributes.Robbery_2019}{" "}
+          <br />
+          {"TheftOver 2019: " +
+            neigh.hoveredObject.attributes.TheftOver_2019}{" "}
+          <br />
         </div>
       )
     );
@@ -355,10 +368,10 @@ function MapOne() {
       .get(
         "https://services.arcgis.com/S9th0jAJ7bqgIRjw/arcgis/rest/services/Neighbourhood_MCI/FeatureServer/0/query?where=1%3D1&outFields=Neighbourhood,Population,Assault_2019,AutoTheft_2019,BreakandEnter_2019,Homicide_2019,Robbery_2019,TheftOver_2019&outSR=4326&f=json"
       )
-      .then(response => {
+      .then((response) => {
         setPolyData(response.data.features);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
   if (!polyData) {
     getData();
@@ -372,25 +385,21 @@ function MapOne() {
     wireframe: true,
     visible: true,
     lineWidthMinPixels: 1,
-    getPolygon: d => d.geometry.rings,
-    getFillColor: d => [
-      d.attributes.Population / 60,
-      140,
-      0
-    ],
+    getPolygon: (d) => d.geometry.rings,
+    getFillColor: (d) => [d.attributes.Population / 60, 140, 0],
     getLineColor: [80, 80, 80],
     getLineWidth: 1,
-    onHover: info => {
+    onHover: (info) => {
       setNeigh({
         hoveredObject: info.object,
         pointerX: info.x,
-        pointerY: info.y
+        pointerY: info.y,
       });
-    }
+    },
   });
 
   const queryParams = {
-    country: "ca"
+    country: "ca",
   };
   const layers = [searchResultLayer];
   if (checkedSchool) {
@@ -414,9 +423,7 @@ function MapOne() {
   if (checkedPlaces) {
     layers.push(placesLayer);
   }
-  if (
-    checkNeigh && polyData
-  ) {
+  if (checkNeigh && polyData) {
     layers.push(polyLayer);
   }
 
@@ -426,8 +433,8 @@ function MapOne() {
       <Header />
       <div className="maps__text">
         The Following Map lets you search for any area and shows previous
-        crimes, places of interest and schools in the area. Scroll down once you
-        have selected something to know more about the Neighbourhood
+        crimes, places of interest and schools in the area. To see crimes,
+        please search a neighbourhood within Toronto
       </div>
       <section className="maps__data">
         <Geocoder
@@ -447,7 +454,8 @@ function MapOne() {
           onViewportChange={setViewport}
           mapStyle="mapbox://styles/darkthunder119/ck7uiltqn5ugg1iqhscr6epoe"
           className="maps__map"
-          dragPan={true} touchAction="pan-y"
+          dragPan={true}
+          touchAction="pan-y"
         >
           {searchResultLayer && (
             <DeckGL {...viewport} layers={layers} getCursor={() => "crosshair"}>
@@ -471,56 +479,96 @@ function MapOne() {
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckedSchool(!checkedSchool)}
-                  checked={checkedSchool}  handleDiameter={13} uncheckedIcon={false} checkedIcon={false}  height={15} width={30}
+                  checked={checkedSchool}
+                  handleDiameter={13}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  height={15}
+                  width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}> School Data</p>
               </div>
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckedAssault(!checkedAssault)}
-                  checked={checkedAssault}  handleDiameter={13} uncheckedIcon={false} checkedIcon={false} height={15} width={30}
+                  checked={checkedAssault}
+                  handleDiameter={13}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  height={15}
+                  width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}> Assaults 2014-2019</p>
               </div>
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckedAuto(!checkedAuto)}
-                  checked={checkedAuto}  handleDiameter={13} uncheckedIcon={false} checkedIcon={false} height={15} width={30}
+                  checked={checkedAuto}
+                  handleDiameter={13}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  height={15}
+                  width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}> Auto Theft 2014-2019</p>
               </div>
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckedRobbery(!checkedRobbery)}
-                  checked={checkedRobbery} handleDiameter={13}  uncheckedIcon={false} checkedIcon={false} height={15} width={30}
+                  checked={checkedRobbery}
+                  handleDiameter={13}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  height={15}
+                  width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}> Robberies 2014-2019</p>
               </div>
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckedBE(!checkedBE)}
-                  checked={checkedBE}  handleDiameter={13} uncheckedIcon={false} checkedIcon={false} height={15} width={30}
+                  checked={checkedBE}
+                  handleDiameter={13}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  height={15}
+                  width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}>Break and Enters 2014-2019</p>
               </div>
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckedTheft(!checkedTheft)}
-                  checked={checkedTheft}  handleDiameter={13} uncheckedIcon={false} checkedIcon={false} height={15} width={30}
+                  checked={checkedTheft}
+                  handleDiameter={13}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  height={15}
+                  width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}> Thefts 2014-2019</p>
               </div>
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckedPlaces(!checkedPlaces)}
-                  checked={checkedPlaces}  handleDiameter={13}  uncheckedIcon={false} checkedIcon={false} height={15} width={30}
+                  checked={checkedPlaces}
+                  handleDiameter={13}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  height={15}
+                  width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}> Places of Interest</p>
               </div>
               <div className="maps__legend">
                 <Switch
                   onChange={() => setCheckNeigh(!checkNeigh)}
-                  checked={checkNeigh} handleDiameter={13}  uncheckedIcon={false} checkedIcon={false} height={15} width={30}
+                  checked={checkNeigh}
+                  handleDiameter={13}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  height={15}
+                  width={30}
                 />
                 <p style={{ paddingLeft: "5px" }}> Neighbourhood Boundaries</p>
               </div>

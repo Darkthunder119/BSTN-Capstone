@@ -5,3 +5,9 @@ body, html {
 *{
     box-sizing: border-box;
 }
+.App{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
