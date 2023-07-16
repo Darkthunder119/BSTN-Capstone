@@ -73,16 +73,16 @@ class Welcome extends React.Component {
             </div>
           </>
         ) : (
-          <Grid
-            color="#263D4D"
-            height={100}
-            width={100}
+          <div
             style={{
               backgroundColor: "#dea291",
-              height: "100vh",
-              paddingTop: "5rem",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
-          />
+          >
+            <Grid color="#263D4D" height={100} width={100} />
+          </div>
         )}
       </article>
     );

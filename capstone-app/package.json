@@ -24,7 +24,7 @@
     "react-map-gl-geocoder": "^2.0.11",
     "react-mapbox-gl-geocoder": "^1.1.0",
     "react-minimal-pie-chart": "^6.0.1",
-    "react-router-dom": "^5.1.2",
+    "react-router-dom": "^6.14.1",
     "react-scripts": "3.4.0",
     "react-switch": "^7.0.0",
     "sass": "^1.63.6",
